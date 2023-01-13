@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Terminal from '@/components/Terminal.vue';
+</script>
+
 <template>
   <main class="container title-container">
     <div class="row">
@@ -8,10 +12,8 @@
         </div>
       </div>
       <div class="title-image-container col">
-        <img class="title-image" src="../assets/DN30.jpg" />
+        <Terminal />
       </div>
-    </div>
-    <div>
     </div>
   </main>
 </template>

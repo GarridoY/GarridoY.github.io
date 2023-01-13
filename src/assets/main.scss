@@ -44,4 +44,12 @@ body {
   display: flex;
   margin: 0 auto;
   justify-content: center;
+  align-items: center;
+}
+
+.terminal {
+  background-color: #303030;
+  color: #dcdfe4;
+  border: 0;
+  outline: none;
 }
