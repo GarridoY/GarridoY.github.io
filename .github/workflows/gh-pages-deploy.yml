@@ -1,19 +1,20 @@
-  name: Deploy to github pages
+  name: Deploy to GitHub Pages
   on:
     push:
       branches:
         - main
   jobs:
     gh-pages-deploy:
-      name: Deploying to gh-pages
+      name: Deploying to GH-Pages
       runs-on: ubuntu-latest
       steps:
-        - name: Setup Node.js for use with actions
-          uses: actions/setup-node@v2
-          with:
-            version:  12.x
         - name: Checkout branch
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
+
+        - name: Setup Node.js for use with actions
+          uses: actions/setup-node@v3
+          with:
+            node-version: 16
 
         - name: Clean install dependencies
           run: npm ci
