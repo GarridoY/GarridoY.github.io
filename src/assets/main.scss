@@ -53,3 +53,19 @@ body {
   border: 0;
   outline: none;
 }
+.title-name {
+  font-size: 5rem; 
+  font-weight: 800; 
+  font-family: Roboto, sans-serif;
+
+  @media (min-width: 1200px) {
+    font-size: 8rem; 
+  }
+}
+.title-container-wrapper {
+  flex-direction: column;
+
+  @media (min-width: 1200px) {
+    flex-direction: row;
+  }
+}

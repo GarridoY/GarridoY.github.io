@@ -2,7 +2,9 @@
 </script>
 
 <template>
-  <main>
-    <h1 class="title">👋 Halløj, I'm Daniél</h1>
+  <main class="container title-container">
+    <div class="row">
+      <h1 class="col-12">👋</h1>
+    </div>
   </main>
 </template>
