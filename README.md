@@ -1,5 +1,4 @@
 # dev-portfolio-project
-
 Development portfolio acting as a passion project.
 
 ## Features in pipeline
