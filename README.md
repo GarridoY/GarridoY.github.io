@@ -1,46 +1,53 @@
 # dev-portfolio-project
 
-This template should help get you started developing with Vue 3 in Vite.
+Development portfolio acting as a passion project.
 
-## Recommended IDE Setup
+## Features in pipeline
+Features related to the UNIX terminal on the front-page.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Introduce new commands to terminal
+Expand commands.
+- `help` rename to `man`
 
-## Type Support for `.vue` Imports in TS
+Print content of file to terminal.
+- `cat \<file-name\>`
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Move or change file name.
+- `mv \<old-file-name\> \<new-file-name\>`
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Print who is logged in (the user visiting the website).
+- `who`
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Print current date. 
+- `date`
 
-## Customize configuration
+Clear content of terminal.
+- `clear`
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Print session time.
+- `uptime`
 
-## Project Setup
+Close tag / browser.
+- `shutdown`
 
-```sh
-npm install
-```
+Reload page.
+- `reboot`
 
-### Compile and Hot-Reload for Development
+### Introduce processes
+Use processes to perform simple tasks such as making a request to a [Quotes API](https://quotes.rest/)
 
-```sh
-npm run dev
-```
+Expand on this idea and introduce new terminal commands.
+- `ps`, `kill`
 
-### Type-Check, Compile and Minify for Production
+### Introduce sessions
+Introduce sessions in order for users to have their current session saved for a later time.
+At least for some time.
 
-```sh
-npm run build
-```
+### New terminal tabs
+Add tabs to the terminal.
 
-### Lint with [ESLint](https://eslint.org/)
+### Pipes (command1 | command2)
+Linking commands. Output from `command1` is passed as input to `command2`.
 
-```sh
-npm run lint
-```
+### UNIX timestamp clock
+Click to toggle between UTC+1 and UNIX time.
