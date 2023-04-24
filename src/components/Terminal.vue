@@ -29,7 +29,7 @@ export default {
             
             validCommands: ["cd", "ls", "help"] as Array<string>,
             previousCommands: [] as Array<string>,
-            previousCommandIndex: 0,
+            previousCommandIndex: 0 as number,
         }
     },
     mounted() {
@@ -39,7 +39,7 @@ export default {
         this.resetPath();
     },
     computed: {
-        prefix: function() {
+        prefix: function(): string {
             let path = "";
             for (let i = 0; i <= this.directories.length - 1; i++) {
                 path += this.directories[i];
@@ -65,7 +65,7 @@ export default {
                 return;
             }
             
-            // Save command in history
+            // Save command in history - only if it not the same as the previous command.
             this.previousCommandIndex += 1;
             if (this.getPreviousCommand() != this.input) {
                 this.previousCommands.push(this.input);
@@ -109,7 +109,7 @@ export default {
                 this.output += file + "\n";
             });
         },
-        getCurrentSystem: function() {
+        getCurrentSystem: function(): System {
             // Find current location in system by following list of directories.
             let system = toRaw(this.system);
             for (const directory of this.directories) {
@@ -153,7 +153,7 @@ export default {
         isValidCommand: function(command: string): boolean {
             return this.validCommands.includes(command);
         },
-        getCurrentDirectory: function() {
+        getCurrentDirectory: function(): string {
             const length = this.directories.length;
             return this.directories[length - 1];
         },
@@ -161,9 +161,9 @@ export default {
             return this.previousCommands[this.previousCommandIndex];
         },
         keyUp: function() {
-            this.input = this.previousCommands[this.previousCommandIndex];
+            this.input = this.getPreviousCommand();
 
-            // Don't go beyond 0.
+            // No newer commands from here. Don't go out of range (Index out of bounds).
             if (this.previousCommandIndex == 0) {
                 return;
             }
@@ -171,18 +171,15 @@ export default {
             this.previousCommandIndex -= 1;
         },
         keyDown: function() {
-            // Don't select latest command.
+            // Ready up for a new command.
+            // No older commands from here. Don't go out of range (Index out of bounds).
             if (this.previousCommandIndex == this.previousCommands.length - 1) {
                 this.input = "";
-            }
-
-            // Don't go out of range.
-            if (this.previousCommandIndex >= this.previousCommands.length - 1) {
                 return;
             }
 
             this.previousCommandIndex += 1;
-            this.input = this.previousCommands[this.previousCommandIndex];
+            this.input = this.getPreviousCommand();
         }
     }
 }
@@ -191,9 +188,9 @@ export default {
 <template>
     <div class="col">
         <div class="row">
-            <textarea id="output" class="terminal" disabled v-model="output" rows="10"></textarea>
+            <textarea id="output" placeholder="Type 'help' for available commands." class="terminal" disabled v-model="output" rows="10"></textarea>
         </div>
-        <form class="row" @submit.prevent="submitCommand">
+        <form class="row" @submit.prevent="submitCommand()">
             <input class="col terminal" v-bind:value="prefix" disabled/>
             <input class="col terminal" autofocus placeholder="Type command here..." v-model="input" @keyup.up="keyUp()" @keyup.down="keyDown()" />
             
